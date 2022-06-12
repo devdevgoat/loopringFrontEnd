@@ -1,0 +1,25 @@
+<head>
+    <script src="/src/loopringsdk.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <div id="connnect">
+        <button type="button" class="btn btn-primary" id="connectWallet" onclick="gameStop();">Gamestop Wallet</button>
+        <button type="button" class="btn btn-warning" id="metaMaskWallet" onclick="getGas();">Get Gas</button><span id="gas" />
+        <button type="button" class="btn btn-danger" id="disconnectWallet" onclick="provider.disconnect();">Disconnnect Wallet</button>
+    </div>
+</body>
+
+<script>
+async function gameStop(){
+    // some users might not have gamestop wallet yet, account for that!
+    if( typeof gamestop !== 'undefined'){
+        //activate the gamestop provider
+        await gamestop.enable();
+    } else {
+        // show an error for users without gamestop wallet
+        alert('You need to install the gamestop wallet via the chrome web store.');
+    }
+}
+</script>
